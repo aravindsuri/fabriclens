@@ -1,2 +1,7 @@
 #!/bin/bash
+
+echo "Activating virtual environment..."
+source antenv/bin/activate
+
+echo "Starting app with gunicorn..."
 gunicorn -w 4 -k uvicorn.workers.UvicornWorker backend.main:app --bind 0.0.0.0:8000

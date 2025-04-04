@@ -22,6 +22,9 @@ jobs:
         run: |
           pip install -r backend/requirements.txt
 
+      - name: Make startup.sh executable
+        run: chmod +x backend/startup.sh
+
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v2
         with:
