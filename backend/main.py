@@ -96,4 +96,8 @@ def list_workspaces(tenant_id: str):
 
     return response.json()
 
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 # More endpoints can follow: /lakehouses, /tables, /stale-tables, etc.
