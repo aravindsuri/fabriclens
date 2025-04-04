@@ -20,10 +20,18 @@ jobs:
 
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r backend/requirements.txt
 
-      - name: Make startup.sh executable
-        run: chmod +x backend/startup.sh
+      # Create a requirements.txt at the root level for Azure to find it
+      - name: Prepare for deployment
+        run: |
+          # Copy requirements file to root for Azure deployment
+          cp backend/requirements.txt ./requirements.txt
+          
+          # Create .deployment file to ensure Azure uses the correct startup command
+          echo "[config]" > .deployment
+          echo "SCM_DO_BUILD_DURING_DEPLOYMENT=true" >> .deployment
 
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v2
