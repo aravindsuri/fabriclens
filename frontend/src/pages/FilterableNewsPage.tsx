@@ -1,6 +1,6 @@
 // File: src/pages/FilterableNewsPage.tsx
 import React, { useState, useMemo } from 'react';
-import { Header } from '../components/Header';
+import Header from '../components/Header';
 import { NewsCard } from '../components/NewsCard';
 import { RssSourceSelector } from '../components/RssSourceSelector';
 import { NewsSearchBar } from '../components/NewsSearchBar';
@@ -41,25 +41,37 @@ const FilterableNewsPage: React.FC = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-light-bg">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-4xl font-bold text-emerald-600 mb-8">Industry News & Insights</h1>
-        
-        <NewsSearchBar onSearch={setSearchTerm} />
+      <section className="product-hero">
+        <div className="container">
+          <div className="breadcrumb">
+            <a href="/">Home</a> <span>/</span> <a href="#news">News</a> <span>/</span> Filter News
+          </div>
+          <h1>Filter Industry News</h1>
+          <p>Browse and filter the latest news and insights about Microsoft Fabric, data governance, and industry trends.</p>
+        </div>
+      </section>
+      
+      <main className="container">
+        <div className="mb-8">
+          <NewsSearchBar onSearch={setSearchTerm} />
+        </div>
         
         {!loading && !error && (
-          <RssSourceSelector
-            sources={sources}
-            selectedSources={selectedSources}
-            onSourceToggle={handleSourceToggle}
-          />
+          <div className="mb-8">
+            <RssSourceSelector
+              sources={sources}
+              selectedSources={selectedSources}
+              onSourceToggle={handleSourceToggle}
+            />
+          </div>
         )}
         
         {loading && (
           <div className="flex justify-center py-10">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-green"></div>
           </div>
         )}
         
@@ -70,13 +82,13 @@ const FilterableNewsPage: React.FC = () => {
         )}
         
         {!loading && !error && filteredNews.length === 0 && (
-          <div className="text-center py-8">
+          <div className="text-center py-8 text-gray-500">
             No news items match your current filters.
           </div>
         )}
         
         {!loading && !error && filteredNews.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredNews.map((item) => (
               <NewsCard key={item.id} item={item} />
             ))}
@@ -86,3 +98,5 @@ const FilterableNewsPage: React.FC = () => {
     </div>
   );
 };
+
+export default FilterableNewsPage;

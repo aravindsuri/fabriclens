@@ -1,23 +1,32 @@
 import React from 'react';
-import './App.css'; // Main App styles
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import HeroSection from './components/HeroSection';
-import IndustryNewsSection from './components/IndustryNewsSection';
-import ProductArticlesSection from './components/ProductArticlesSection';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import MedallionArchitecturePage from './pages/products/medallion-architecture';
 
-function App() {
+// Styles
+import './styles/App.css';
+import './styles/Header.css';
+import './styles/NewsSection.css';
+import './styles/ArticlesSection.css';
+import './styles/ProductPage.css';
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <Header />
-      <main>
-        <HeroSection />
-        <IndustryNewsSection />
-        <ProductArticlesSection />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products/medallion-architecture" element={<MedallionArchitecturePage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
