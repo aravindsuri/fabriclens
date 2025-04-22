@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/ProductPage.css';
+import PricingSection from '../../components/PricingSection';
 import {
   DocumentIcon,
   DatasetIcon,
@@ -124,6 +125,34 @@ const MedallionArchitecturePage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <PricingSection />
+
+      <section className="faq">
+        <div className="container">
+          <div className="section-title">
+            <h2>Frequently Asked Questions</h2>
+            <p>Common questions about our Medallion Architecture Starter Kit</p>
+          </div>
+          
+          <div className="faq-grid">
+            {faqItems.map((item, index) => (
+              <div key={index} className="faq-item">
+                <h3>{item.question}</h3>
+                <p>{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="cta-section">
+        <div className="container">
+          <h2>Ready to Accelerate Your Microsoft Fabric Projects?</h2>
+          <p>Get started with our Medallion Architecture Starter Kit today and transform your data engineering experience.</p>
+          <a href="#pricing" className="cta-button">Choose Your Package</a>
+        </div>
+      </section>
     </div>
   );
 };
@@ -217,4 +246,70 @@ const testimonials = [
   }
 ];
 
-export default MedallionArchitecturePage; 
+const pricingPlans = [
+  {
+    name: 'Basic',
+    price: '79',
+    features: [
+      { text: 'Core notebooks and templates', included: true },
+      { text: 'Delta table scripts', included: true },
+      { text: 'Basic folder structure', included: true },
+      { text: 'Email support (30 days)', included: true },
+      { text: 'Sample datasets', included: false },
+      { text: 'Monitoring & governance tools', included: false },
+      { text: 'Consultation', included: false }
+    ]
+  },
+  {
+    name: 'Standard',
+    price: '129',
+    featured: true,
+    features: [
+      { text: 'Core notebooks and templates', included: true },
+      { text: 'Delta table scripts', included: true },
+      { text: 'Complete folder structure', included: true },
+      { text: 'Sample datasets', included: true },
+      { text: 'Email support (90 days)', included: true },
+      { text: 'Monitoring & governance tools', included: true },
+      { text: 'Consultation', included: false }
+    ]
+  },
+  {
+    name: 'Premium',
+    price: '249',
+    features: [
+      { text: 'Everything in Standard', included: true },
+      { text: '30-minute consultation', included: true },
+      { text: 'Custom adaptations', included: true },
+      { text: 'Priority email support (180 days)', included: true },
+      { text: 'Slide deck for internal presentations', included: true },
+      { text: 'Architecture review session', included: true },
+      { text: 'Quarterly product updates (1 year)', included: true }
+    ]
+  }
+];
+
+const faqItems = [
+  {
+    question: 'Is this compatible with the latest version of Microsoft Fabric?',
+    answer: 'Yes, our starter kit is regularly updated to ensure compatibility with the latest Microsoft Fabric releases. We provide quarterly updates to all Premium tier customers.'
+  },
+  {
+    question: 'Can I customize the templates for my specific needs?',
+    answer: 'Absolutely! All templates are fully customizable. The notebooks include detailed comments to help you understand the code and make adaptations. Premium tier customers also receive personalized guidance on customizations.'
+  },
+  {
+    question: 'Do I need any specific skills to use this starter kit?',
+    answer: 'Basic familiarity with Microsoft Fabric, Python/Spark, and data concepts is recommended. The templates include extensive documentation to help users of all skill levels, but some technical background will be beneficial.'
+  },
+  {
+    question: 'How are updates delivered?',
+    answer: 'Updates are delivered through our customer portal. Standard and Basic customers receive critical updates for 6 months. Premium customers receive quarterly updates for a full year, including new features and improvements.'
+  },
+  {
+    question: 'Can I use this for production workloads?',
+    answer: 'Yes, the Medallion Architecture Starter Kit is designed for production use. Many organizations have successfully implemented it in their production environments. Our guides include best practices for testing and deployment.'
+  }
+];
+
+export default MedallionArchitecturePage;

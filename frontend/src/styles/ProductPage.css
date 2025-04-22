@@ -125,6 +125,7 @@
   font-size: 18px;
   max-width: 700px;
   margin: 0 auto;
+  color: var(--text);
 }
 
 .components {
@@ -278,4 +279,131 @@
   .testimonial-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.pricing {
+  padding: 60px 0;
+}
+
+.pricing-table {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.pricing-plan {
+  background-color: var(--light-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 320px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pricing-plan h3 {
+  font-size: 24px;
+  color: var(--text);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.price {
+  font-size: 42px;
+  font-weight: bold;
+  color: var(--primary-green);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.price-period {
+  text-align: center;
+  color: var(--text);
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.pricing-features {
+  margin: 30px 0;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 30px;
+}
+
+.pricing-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  color: var(--text);
+}
+
+.pricing-features li svg {
+  color: var(--primary-green);
+  flex-shrink: 0;
+}
+
+.pricing-features li svg.cross {
+  color: #ccc;
+}
+
+.pricing-footer {
+  text-align: center;
+}
+
+.pricing-plan.featured {
+  background-color: var(--primary-green);
+}
+
+.pricing-plan.featured h3,
+.pricing-plan.featured .price,
+.pricing-plan.featured .price-period,
+.pricing-plan.featured .pricing-features li {
+  color: white;
+}
+
+.pricing-plan.featured .pricing-features li svg {
+  color: white;
+}
+
+.pricing-plan.featured .cta-button {
+  background-color: white;
+  color: var(--primary-green);
+}
+
+.pricing-plan.featured .cta-button:hover {
+  background-color: var(--light-bg);
+}
+
+/* FAQ Section */
+.faq {
+  padding: 60px 0;
+  background-color: var(--light-bg);
+}
+
+.faq-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.faq-item h3 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--primary-green);
+}
+
+.faq-item p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.6;
 } 
