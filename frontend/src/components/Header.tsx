@@ -36,6 +36,7 @@ const Header: React.FC = () => {
                 <div className="dropdown-content">
                   <Link to="/products/medallion-architecture">Medallion Architecture Starter Kit</Link>
                   {/* Add more product links here */}
+                  <Link to="/products/api-fabric-ingestion">API to Fabric Ingestion</Link>
                 </div>
               )}
             </div>

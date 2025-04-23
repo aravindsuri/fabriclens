@@ -1,7 +1,27 @@
 import React from 'react';
 import '../styles/PricingSection.css';
 
-const pricingPlans = [
+// Define types for our pricing features and plans
+interface PricingFeature {
+  text: string;
+  included: boolean;
+}
+
+interface PricingPlan {
+  name: string;
+  price: string;
+  featured?: boolean;
+  features: PricingFeature[];
+}
+
+interface PricingSectionProps {
+  plans?: PricingPlan[];
+  title?: string;
+  subtitle?: string;
+}
+
+// Default pricing plans (for Medallion Architecture)
+const defaultPricingPlans = [
   {
     name: 'Basic',
     price: '79',
@@ -44,45 +64,54 @@ const pricingPlans = [
   }
 ];
 
-const PricingSection = () => (
-  <section className="pricing" id="pricing">
-    <div className="container">
-      <div className="section-title">
-        <h2>Pricing Options</h2>
-        <p>Choose the package that best fits your needs</p>
-      </div>
-      
-      <div className="pricing-cards">
-        {pricingPlans.map((plan) => (
-          <div key={plan.name} className={`pricing-card ${plan.featured ? 'featured' : ''}`}>
-            <div className="pricing-header">
-              <h3>{plan.name}</h3>
-              <div className="price-container">
-                <span className="price-symbol">$</span>
-                <span className="price-value">{plan.price}</span>
-              </div>
-              <div className="price-period">one-time purchase</div>
-            </div>
-            
-            <div className="pricing-features">
-              {plan.features.map((feature, index) => (
-                <div key={index} className="feature-item">
-                  <span className={`feature-icon ${feature.included ? 'included' : 'not-included'}`}>
-                    {feature.included ? '✓' : '×'}
-                  </span>
-                  <span className="feature-text">{feature.text}</span>
+const PricingSection: React.FC<PricingSectionProps> = ({ 
+  plans = defaultPricingPlans,
+  title = "Pricing Options",
+  subtitle = "Choose the package that best fits your needs"
+}) => {
+  // For debugging
+  console.log("PricingSection received plans:", plans);
+  
+  return (
+    <section className="pricing" id="pricing">
+      <div className="container">
+        <div className="section-title">
+          <h2>{title}</h2>
+          <p>{subtitle}</p>
+        </div>
+        
+        <div className="pricing-cards">
+          {plans.map((plan) => (
+            <div key={plan.name} className={`pricing-card ${plan.featured ? 'featured' : ''}`}>
+              <div className="pricing-header">
+                <h3>{plan.name}</h3>
+                <div className="price-container">
+                  <span className="price-symbol">$</span>
+                  <span className="price-value">{plan.price}</span>
                 </div>
-              ))}
+                <div className="price-period">one-time purchase</div>
+              </div>
+              
+              <div className="pricing-features">
+                {plan.features.map((feature, index) => (
+                  <div key={index} className="feature-item">
+                    <span className={`feature-icon ${feature.included ? 'included' : 'not-included'}`}>
+                      {feature.included ? '✓' : '×'}
+                    </span>
+                    <span className="feature-text">{feature.text}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="pricing-footer">
+                <button className="buy-button">Buy Now</button>
+              </div>
             </div>
-            
-            <div className="pricing-footer">
-              <button className="buy-button">Buy Now</button>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
-export default PricingSection; 
+export default PricingSection;

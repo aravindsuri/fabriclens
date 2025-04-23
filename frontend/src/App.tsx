@@ -11,6 +11,7 @@ import './styles/Header.css';
 import './styles/NewsSection.css';
 import './styles/ArticlesSection.css';
 import './styles/ProductPage.css';
+import APIFabricIngestionPage from './pages/products/api-fabric-ingestion';
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products/medallion-architecture" element={<MedallionArchitecturePage />} />
+            <Route path="/products/api-fabric-ingestion" element={<APIFabricIngestionPage />} />
           </Routes>
         </main>
         <Footer />
