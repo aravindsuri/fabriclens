@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "path/to/python",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "jupyter.jupyterServerType": "remote",
+    "jupyter.allowUnauthorizedRemoteConnection": true
+  }
